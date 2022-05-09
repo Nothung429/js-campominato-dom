@@ -40,15 +40,15 @@ function getMatch (firstArray, secondArray) {
 
 // 1. CREO IL MIO CAMPO MINATO
 const mineField = [];
-for (let i = 1 ; i <= 100 ; i++) {
-     mineField.push(i);
+for (let i = 1 ; i <= 10 ; i++) {
+    mineField.push(i);
 }
- console.log(mineField);
+console.log(mineField);
 
 // 2. CALCOLO IL VALORE DELLE 16 MINE CASUALI
 const cpuMines = [];
-while (cpuMines.length < 16) {
-    let mine = getRandomNumber(1,100);
+while (cpuMines.length < 4) {
+    let mine = getRandomNumber(1,10);
     if (!cpuMines.includes(mine)) {
         cpuMines.push(mine);
     }
@@ -56,10 +56,17 @@ while (cpuMines.length < 16) {
 console.log(cpuMines);
 
 // 3. CREO IL CONFRONTO TRA IL CAMPO MINATO E LE MINE
-getMatch(mineField,cpuMines);
+const control = getMatch(mineField,cpuMines);
 
 // 4. CHIEDO AL GIOCATORE DI INSERIRE UN NUMERO
+const safeSpot = [];
 do {
     let userChoice = Number(prompt("Inserisci un numero"));
-    console.log(userChoice);
-} while (getMatch(mineField,cpuMines) === false);
+    if (!cpuMines.includes(userChoice)) {
+        console.log("Continua");
+        safeSpot.push(userChoice);
+    } else {
+        console.log("Addios");
+    }
+} while (safeSpot.lenght < 6);
+console.log(safeSpot);
