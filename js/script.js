@@ -60,13 +60,16 @@ const control = getMatch(mineField,cpuMines);
 
 // 4. CHIEDO AL GIOCATORE DI INSERIRE UN NUMERO
 const safeSpot = [];
+let explosion = 0;
 do {
     let userChoice = Number(prompt("Inserisci un numero"));
+    let explosion = 0;
     if (!cpuMines.includes(userChoice)) {
         console.log("Continua");
         safeSpot.push(userChoice);
     } else {
+        let explosion = 1;
         console.log("Addios");
     }
-} while (safeSpot.lenght < 6);
+} while (safeSpot.length < 6 || explosion === 1);
 console.log(safeSpot);
