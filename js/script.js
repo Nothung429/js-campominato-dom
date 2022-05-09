@@ -45,7 +45,7 @@ for (let i = 1 ; i <= 10 ; i++) {
 }
 console.log(mineField);
 
-// 2. CALCOLO IL VALORE DELLE 16 MINE CASUALI
+// 2. CALCOLO IL VALORE DELLE 16 MINE CASUALI: Il computer deve generare 16 numeri casuali tra 1 e 100, I numeri non possono essere duplicati
 const cpuMines = [];
 while (cpuMines.length < 4) {
     let mine = getRandomNumber(1,10);
@@ -58,18 +58,17 @@ console.log(cpuMines);
 // 3. CREO IL CONFRONTO TRA IL CAMPO MINATO E LE MINE
 const control = getMatch(mineField,cpuMines);
 
-// 4. CHIEDO AL GIOCATORE DI INSERIRE UN NUMERO
+// 4. CHIEDO AL GIOCATORE DI INSERIRE UN NUMERO: Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all’utente un altro numero
 const safeSpot = [];
 let explosion = 0;
 do {
     let userChoice = Number(prompt("Inserisci un numero"));
-    let explosion = 0;
     if (!cpuMines.includes(userChoice)) {
         console.log("Continua");
         safeSpot.push(userChoice);
     } else {
-        let explosion = 1;
+        explosion = 1;
         console.log("Addios");
     }
-} while (safeSpot.length < 6 || explosion === 1);
+} while (safeSpot.length < 6 && explosion === 0);
 console.log(safeSpot);
