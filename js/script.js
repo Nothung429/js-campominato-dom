@@ -7,17 +7,36 @@
 // La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di numeri consentiti.
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
 
+//------ FUNCTIONS ------//
+function getRandomNumber (min , max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function getMatch (firstArray, secondArray) {
+    let matches = [];
+    for (let i = 0 ; i < firstArray.length ; i++) {
+        for (let j = 0 ; j < secondArray.length ; j++) {
+            if ( firstArray[i] === secondArray[j] ) {
+                matches.push (firstArray[i]);
+            }
+        }
+    }
+    alert(matches);
+}
+
+//------ MAIN ------//
+
 // 1. CREO IL MIO CAMPO MINATO
 const mineField = [];
 for (let i = 1 ; i <= 100 ; i++) {
-    mineField.push(i);
+     mineField.push(i);
+     for (let j = 1 ; j <= 100 ; j++) {
+
+     }
 }
-console.log(mineField);
+ console.log(mineField);
 
 // 2. CALCOLO IL VALORE DELLE 16 MINE CASUALI
-function getRandomNumber (min , max) {
-    return Math.floor(Math.random() * (max - min +1)) + min;
-}
 const cpuMines = [];
 while (cpuMines.length < 16) {
     let mine = getRandomNumber(1,100);
@@ -27,12 +46,12 @@ while (cpuMines.length < 16) {
 }
 console.log(cpuMines);
 
+// 3. CREO IL CONFRONTO TRA IL CAMPO MINATO E LE MINE
+getMatch(mineField,cpuMines);
 
-
-
-
-
-
+// 4. CHIEDO AL GIOCATORE DI INSERIRE UN NUMERO
+let userChoice = Number(prompt("Inserisci un numero"));
+console.log(userChoice);
 
 
 // BONUS: (da fare solo se funziona tutto il resto)
