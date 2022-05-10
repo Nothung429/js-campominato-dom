@@ -1,0 +1,39 @@
+/*------ general ------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #083b4c;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/*------ title ------*/
+h1 {
+    font-size: 80px;
+    margin-top: 10px;
+    text-align: center;
+    color: #fff;
+}
+
+/*------ fizzbuzz game ------*/
+.container {
+    width: 1180px;
+    margin: 40px auto;
+}
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style: none;
+}
+.item {
+    width: 100px;
+    height: 100px;
+    background-color: #1389b2;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 100px;
+    font-size: 24px;
+}
