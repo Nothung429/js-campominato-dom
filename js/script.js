@@ -43,7 +43,6 @@ if (difficultyLevel === 0) {
 // }
 // ------------------------------------------------------------------------------------------
 
-// CSS
 const campo = document.querySelector(".list");
 for (let i = 1 ; i <= squares ; i++) {
     mineField.push(i);
@@ -69,7 +68,6 @@ console.log(cpuMines);
 
 // 3. CREO IL CONFRONTO TRA IL CAMPO MINATO E LE MINE
 let possibility = mineField.length - cpuMines.length;
-const control = getMatch(mineField,cpuMines);
 
 // 4. CHIEDO AL GIOCATORE DI INSERIRE UN NUMERO: Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all’utente un altro numero
 const safeSpot = [];
@@ -80,21 +78,24 @@ for (let i = 0 ; i < play.length ; i++){
     const play = document.querySelectorAll(".item");
     play[i].addEventListener ("click", 
         function() {
-            if (cpuMines.includes(play[i])) {
+            const posizione = i+1;
+            console.log(posizione);
+            if (cpuMines.includes(posizione)) {
                 explosion = 1;
                 play[i].classList.add("mine");
             } else {
-                safeSpot.push(userChoice);
+                safeSpot.push(posizione);
                 play[i].classList.add("safe");
             }
+            if (explosion === 1) {
+                alert(`Hai perso, Il tuo punteggio è : ${safeSpot.length}`);
+            } else if (play.length === safeSpot.length) {
+                alert(`Hai vinto, Il tuo punteggio è : ${safeSpot.length}`);
+            }
+            console.log(safeSpot);
         }
     );
 }
-// if (explosion === 1) {
-//     alert(`Hai perso, Il tuo punteggio è : ${safeSpot.length}`);
-// } else {
-//     alert(`Hai vinto, Il tuo punteggio è : ${safeSpot.length}`);
-// }
 
 // ------------------------------------------------------------------------------------------
 // ONLY JS
