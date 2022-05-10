@@ -78,19 +78,19 @@ let explosion = 0;
 const play = document.querySelector(".item")
 play.addEventListener ("click", 
     function() {
-        // while (safeSpot.length < possibility && explosion === 0) {
+        while (safeSpot.length < possibility && explosion === 0) {
         // let userChoice = Number(prompt("Inserisci un numero tra 1 e 100"));
         // while (isNaN(userChoice) || userChoice < 1 || userChoice > 100) {
         //     userChoice = Number(prompt("Hai sbagliato, inserisci nuovamente un numero"));
         // }
-        if (cpuMines.includes(userChoice)) {
-            explosion = 1;
-            caselle.classList.add("mine");
-        } else {
-            safeSpot.push(userChoice);
-            caselle.classList.add("safe");
+            if (cpuMines.includes(userChoice)) {
+                explosion = 1;
+                play.classList.add("mine");
+            } else {
+                safeSpot.push(userChoice);
+                play.classList.add("safe");
+            }
         }
-        // }
     }
 );
 // if (explosion === 1) {
