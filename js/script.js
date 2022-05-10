@@ -12,7 +12,6 @@ const easy = document.getElementById("easy")
 easy.addEventListener ("click", 
     function () {
         let squares = 100;
-        console.log(squares);
         const field = document.querySelector(".list");
         for (let i = 1 ; i <= squares ; i++) {
             mineField.push(i);
@@ -40,7 +39,6 @@ easy.addEventListener ("click",
             play[i].addEventListener ("click", 
                 function() {
                     const posizione = i+1;
-                    console.log(posizione);
                     if (cpuMines.includes(posizione)) {
                         explosion = 1;
                         play[i].classList.add("mine");
@@ -56,7 +54,6 @@ easy.addEventListener ("click",
                         document.getElementById("result").style.color = "green";
                         document.getElementById("result").innerText = `HAI VINTO!!!, Il tuo punteggio è : ${safeSpot.length}`;
                     }
-                    console.log(safeSpot);
                 }
             );
         }
@@ -68,7 +65,6 @@ const medium = document.getElementById("medium")
 medium.addEventListener ("click", 
     function () {
         let squares = 80;
-        console.log(squares);
         const field = document.querySelector(".list");
         for (let i = 1 ; i <= squares ; i++) {
             mineField.push(i);
@@ -96,7 +92,6 @@ medium.addEventListener ("click",
             play[i].addEventListener ("click", 
                 function() {
                     const posizione = i+1;
-                    console.log(posizione);
                     if (cpuMines.includes(posizione)) {
                         explosion = 1;
                         play[i].classList.add("mine");
@@ -112,7 +107,6 @@ medium.addEventListener ("click",
                         document.getElementById("result").style.color = "green";
                         document.getElementById("result").innerText = `HAI VINTO!!!, Il tuo punteggio è : ${safeSpot.length}`;
                     }
-                    console.log(safeSpot);
                 }
             );
         }
@@ -124,7 +118,6 @@ const difficult = document.getElementById("difficult")
 difficult.addEventListener ("click", 
     function () {
         let squares = 50;
-        console.log(squares);
         const field = document.querySelector(".list");
         for (let i = 1 ; i <= squares ; i++) {
             mineField.push(i);
@@ -152,7 +145,6 @@ difficult.addEventListener ("click",
             play[i].addEventListener ("click", 
                 function() {
                     const posizione = i+1;
-                    console.log(posizione);
                     if (cpuMines.includes(posizione)) {
                         explosion = 1;
                         play[i].classList.add("mine");
@@ -168,7 +160,6 @@ difficult.addEventListener ("click",
                         document.getElementById("result").style.color = "green";
                         document.getElementById("result").innerText = `HAI VINTO!!!, Il tuo punteggio è : ${safeSpot.length}`;
                     }
-                    console.log(safeSpot);
                 }
             );
         }
