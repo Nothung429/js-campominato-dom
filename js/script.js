@@ -72,31 +72,30 @@ let possibility = mineField.length - cpuMines.length;
 const control = getMatch(mineField,cpuMines);
 
 // 4. CHIEDO AL GIOCATORE DI INSERIRE UN NUMERO: Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all’utente un altro numero
-let userChoice = caselle;
 const safeSpot = [];
 let explosion = 0;
 const play = document.querySelectorAll(".item");
-for (let i = 1 ; i < mineField.length ; i++){
-    play.addEventListener ("click", 
+let userChoice = play;
+for (let i = 0 ; i < play.length ; i++){
+    const play = document.querySelectorAll(".item");
+    play[i].addEventListener ("click", 
         function() {
-            while (safeSpot.length < possibility && explosion === 0) {
-                if (cpuMines.includes(userChoice)) {
-                    explosion = 1;
-                    play.classList.add("mine");
-                } else {
-                    safeSpot.push(userChoice);
-                    play.classList.add("safe");
-                }
+            if (cpuMines.includes(play[i])) {
+                explosion = 1;
+                play[i].classList.add("mine");
+            } else {
+                safeSpot.push(userChoice);
+                play[i].classList.add("safe");
             }
         }
     );
 }
-
 // if (explosion === 1) {
 //     alert(`Hai perso, Il tuo punteggio è : ${safeSpot.length}`);
 // } else {
 //     alert(`Hai vinto, Il tuo punteggio è : ${safeSpot.length}`);
 // }
+
 // ------------------------------------------------------------------------------------------
 // ONLY JS
 // const safeSpot = [];
