@@ -27,18 +27,16 @@ while (isNaN(difficultyLevel) || difficultyLevel < 0 || difficultyLevel > 2) {
 
 // 1. CREO IL MIO CAMPO MINATO
 let mineField = [];
+let squares = 0;
 if (difficultyLevel === 0) {
-    for (let i = 1 ; i <= 100 ; i++) {
-        mineField.push(i);
-    }
+    squares = 100;
 } else if (difficultyLevel === 1) {
-    for (let i = 1 ; i <= 80 ; i++) {
-        mineField.push(i);
-    }
+    squares = 80;
 } else {
-    for (let i = 1 ; i <= 50 ; i++) {
-        mineField.push(i);
-    }
+    squares = 50;
+}
+for (let i = 1 ; i <= squares ; i++) {
+    mineField.push(i);
 }
 console.log(mineField);
 
@@ -67,18 +65,16 @@ while (safeSpot.length < possibility && explosion === 0) {
 
     if (cpuMines.includes(userChoice)) {
         explosion = 1;
-        console.log("Addios");
     } else if (safeSpot.includes(userChoice)) {
         alert("Hai già inserito questo numero");
     } else {
         safeSpot.push(userChoice);
-        console.log("Continua");
     }
 }
 
 // 5. COMUNICO IL PUNTEGGIO DELLA PARTITA: Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito
 if (explosion === 1) {
-    console.log("Hai perso, Il tuo punteggio è:", safeSpot.length);
+    alert(`Hai perso, Il tuo punteggio è : ${safeSpot.length}`);
 } else {
-    console.log("Hai vinto, il tuo punteggio é:", safeSpot.length);
+    alert(`Hai vinto, Il tuo punteggio è : ${safeSpot.length}`);
 }
