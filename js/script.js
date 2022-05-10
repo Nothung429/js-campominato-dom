@@ -75,8 +75,10 @@ const control = getMatch(mineField,cpuMines);
 let userChoice = caselle;
 const safeSpot = [];
 let explosion = 0;
-document.addEventListener("click", function(){
-    while (safeSpot.length < possibility && explosion === 0) {
+const play = document.querySelector(".item")
+play.addEventListener ("click", 
+    function() {
+        // while (safeSpot.length < possibility && explosion === 0) {
         // let userChoice = Number(prompt("Inserisci un numero tra 1 e 100"));
         // while (isNaN(userChoice) || userChoice < 1 || userChoice > 100) {
         //     userChoice = Number(prompt("Hai sbagliato, inserisci nuovamente un numero"));
@@ -88,13 +90,14 @@ document.addEventListener("click", function(){
             safeSpot.push(userChoice);
             caselle.classList.add("safe");
         }
+        // }
     }
-});
-if (explosion === 1) {
-    alert(`Hai perso, Il tuo punteggio è : ${safeSpot.length}`);
-} else {
-    alert(`Hai vinto, Il tuo punteggio è : ${safeSpot.length}`);
-}
+);
+// if (explosion === 1) {
+//     alert(`Hai perso, Il tuo punteggio è : ${safeSpot.length}`);
+// } else {
+//     alert(`Hai vinto, Il tuo punteggio è : ${safeSpot.length}`);
+// }
 // ------------------------------------------------------------------------------------------
 // ONLY JS
 // const safeSpot = [];
@@ -111,7 +114,6 @@ if (explosion === 1) {
 //         alert("Hai già inserito questo numero");
 //     } else {
 //         safeSpot.push(userChoice);
-        
 //     }
 // }
 
