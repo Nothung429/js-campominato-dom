@@ -75,24 +75,23 @@ const control = getMatch(mineField,cpuMines);
 let userChoice = caselle;
 const safeSpot = [];
 let explosion = 0;
-const play = document.querySelector(".item")
-play.addEventListener ("click", 
-    function() {
-        while (safeSpot.length < possibility && explosion === 0) {
-        // let userChoice = Number(prompt("Inserisci un numero tra 1 e 100"));
-        // while (isNaN(userChoice) || userChoice < 1 || userChoice > 100) {
-        //     userChoice = Number(prompt("Hai sbagliato, inserisci nuovamente un numero"));
-        // }
-            if (cpuMines.includes(userChoice)) {
-                explosion = 1;
-                play.classList.add("mine");
-            } else {
-                safeSpot.push(userChoice);
-                play.classList.add("safe");
+const play = document.querySelectorAll(".item");
+for (let i = 1 ; i < mineField.length ; i++){
+    play.addEventListener ("click", 
+        function() {
+            while (safeSpot.length < possibility && explosion === 0) {
+                if (cpuMines.includes(userChoice)) {
+                    explosion = 1;
+                    play.classList.add("mine");
+                } else {
+                    safeSpot.push(userChoice);
+                    play.classList.add("safe");
+                }
             }
         }
-    }
-);
+    );
+}
+
 // if (explosion === 1) {
 //     alert(`Hai perso, Il tuo punteggio è : ${safeSpot.length}`);
 // } else {
