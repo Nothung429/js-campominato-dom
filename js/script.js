@@ -35,8 +35,25 @@ if (difficultyLevel === 0) {
 } else {
     squares = 50;
 }
+
+// ------------------------------------------------------------------------------------------
+// ONLY JS
+// for (let i = 1 ; i <= squares ; i++) {
+//     mineField.push(i);
+// }
+// ------------------------------------------------------------------------------------------
+
+// CSS
+const campo = document.querySelector(".list");
 for (let i = 1 ; i <= squares ; i++) {
     mineField.push(i);
+    var caselle = document.createElement("li");
+    if (i !== isNaN) {
+        caselle.classList.add("item");
+        caselle.innerText = i;
+        console.log(i);
+    }
+    campo.append(caselle);
 }
 console.log(mineField);
 
@@ -55,26 +72,53 @@ let possibility = mineField.length - cpuMines.length;
 const control = getMatch(mineField,cpuMines);
 
 // 4. CHIEDO AL GIOCATORE DI INSERIRE UN NUMERO: Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all’utente un altro numero
+let userChoice = caselle;
 const safeSpot = [];
 let explosion = 0;
-while (safeSpot.length < possibility && explosion === 0) {
-    let userChoice = Number(prompt("Inserisci un numero tra 1 e 100"));
-    while (isNaN(userChoice) || userChoice < 1 || userChoice > 100) {
-        userChoice = Number(prompt("Hai sbagliato, inserisci nuovamente un numero"));
+document.addEventListener("click", function(){
+    while (safeSpot.length < possibility && explosion === 0) {
+        // let userChoice = Number(prompt("Inserisci un numero tra 1 e 100"));
+        // while (isNaN(userChoice) || userChoice < 1 || userChoice > 100) {
+        //     userChoice = Number(prompt("Hai sbagliato, inserisci nuovamente un numero"));
+        // }
+        if (cpuMines.includes(userChoice)) {
+            explosion = 1;
+            caselle.classList.add("mine");
+        } else {
+            safeSpot.push(userChoice);
+            caselle.classList.add("safe");
+        }
     }
-
-    if (cpuMines.includes(userChoice)) {
-        explosion = 1;
-    } else if (safeSpot.includes(userChoice)) {
-        alert("Hai già inserito questo numero");
-    } else {
-        safeSpot.push(userChoice);
-    }
-}
-
-// 5. COMUNICO IL PUNTEGGIO DELLA PARTITA: Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito
+});
 if (explosion === 1) {
     alert(`Hai perso, Il tuo punteggio è : ${safeSpot.length}`);
 } else {
     alert(`Hai vinto, Il tuo punteggio è : ${safeSpot.length}`);
 }
+// ------------------------------------------------------------------------------------------
+// ONLY JS
+// const safeSpot = [];
+// let explosion = 0;
+// while (safeSpot.length < possibility && explosion === 0) {
+//     let userChoice = Number(prompt("Inserisci un numero tra 1 e 100"));
+//     while (isNaN(userChoice) || userChoice < 1 || userChoice > 100) {
+//         userChoice = Number(prompt("Hai sbagliato, inserisci nuovamente un numero"));
+//     }
+
+//     if (cpuMines.includes(userChoice)) {
+//         explosion = 1;
+//     } else if (safeSpot.includes(userChoice)) {
+//         alert("Hai già inserito questo numero");
+//     } else {
+//         safeSpot.push(userChoice);
+        
+//     }
+// }
+
+// 5. COMUNICO IL PUNTEGGIO DELLA PARTITA: Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito
+// if (explosion === 1) {
+//     alert(`Hai perso, Il tuo punteggio è : ${safeSpot.length}`);
+// } else {
+//     alert(`Hai vinto, Il tuo punteggio è : ${safeSpot.length}`);
+// }
+// ------------------------------------------------------------------------------------------

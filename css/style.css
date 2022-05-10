@@ -17,7 +17,7 @@ h1 {
     color: #fff;
 }
 
-/*------ fizzbuzz game ------*/
+/*------ minefield ------*/
 .container {
     width: 1180px;
     margin: 40px auto;
@@ -36,4 +36,10 @@ h1 {
     text-align: center;
     line-height: 100px;
     font-size: 24px;
+}
+.safe {
+    background-color: green;
+}
+.mine {
+    background-color: red;
 }
