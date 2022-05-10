@@ -47,8 +47,8 @@ console.log(mineField);
 
 // 2. CALCOLO IL VALORE DELLE 16 MINE CASUALI: Il computer deve generare 16 numeri casuali tra 1 e 100, I numeri non possono essere duplicati
 const cpuMines = [];
-while (cpuMines.length < 4) {
-    let mine = getRandomNumber(1,10);
+while (cpuMines.length < 5) {
+    let mine = getRandomNumber(1,100);
     if (!cpuMines.includes(mine)) {
         cpuMines.push(mine);
     }
@@ -62,13 +62,15 @@ const control = getMatch(mineField,cpuMines);
 const safeSpot = [];
 let explosion = 0;
 do {
-    let userChoice = Number(prompt("Inserisci un numero"));
+    const userChoice = Number(prompt("Inserisci un numero"));
     if (!cpuMines.includes(userChoice)) {
-        console.log("Continua");
         safeSpot.push(userChoice);
+        console.log("Continua");
     } else {
         explosion = 1;
         console.log("Addios");
     }
-} while (safeSpot.length < 6 && explosion === 0);
-console.log(safeSpot);
+} while (safeSpot.length < 5 && explosion === 0);
+
+// 5. COMUNICO IL PUNTEGGIO DELLA PARTITA: Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito
+console.log("Il tuo punteggio è:", safeSpot.length);
