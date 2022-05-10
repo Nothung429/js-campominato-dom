@@ -20,7 +20,21 @@ h1 {
 /*------ minefield ------*/
 .container {
     width: 1180px;
-    margin: 40px auto;
+    margin: auto;
+}
+.btn {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+.btn button {
+    margin: 0 30px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 30px;
+    color: #fff;
+    background-color: orangered;
+    cursor: pointer;
 }
 .list {
     display: flex;
@@ -42,4 +56,10 @@ h1 {
 }
 .mine {
     background-color: red;
+}
+#result {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 46px;
+    color: red;
 }
